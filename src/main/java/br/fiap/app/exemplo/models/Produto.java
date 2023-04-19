@@ -4,6 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 @Entity //cria entidade
 public class Produto {
@@ -11,8 +15,18 @@ public class Produto {
 	@Id //primary key
 	@GeneratedValue(strategy=GenerationType.AUTO) //auto increment
 	private Long id; 
+	
+	@NotBlank(message = "Favor preencher o nome do produto")
 	private String nome;
+	
+	//@Pattern(regexp = "[0-9]{2}[\\.]?[0-9]{3}[\\.]?[0-9]{3}[\\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\\.]?[0-9]{3}[\\.]?[0-9]{3}[-]?[0-9]{2}")
+	//private String cpf;
+	
+	
 	private Long idCategoria; 
+	
+	@NotNull(message="O fornecedor é obrigatório!")
+	@Min(1)
 	private Long idFornecedor; 
 	
 	
