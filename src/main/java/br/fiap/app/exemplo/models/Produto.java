@@ -7,7 +7,6 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 
 @Entity //cria entidade
 public class Produto {
@@ -26,7 +25,7 @@ public class Produto {
 	private Long idCategoria; 
 	
 	@NotNull(message="O fornecedor é obrigatório!")
-	@Min(1)
+	@Min(value = 1, message = "Favor selecionar o fornecedor")
 	private Long idFornecedor; 
 	
 	
